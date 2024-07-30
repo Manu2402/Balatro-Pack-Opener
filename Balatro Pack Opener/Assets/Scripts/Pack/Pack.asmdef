@@ -1,0 +1,16 @@
+{
+    "name": "Pack",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a2afe4b948e594448a035dc4e613bdaf"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

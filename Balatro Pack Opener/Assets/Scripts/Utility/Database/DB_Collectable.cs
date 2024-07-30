@@ -31,8 +31,6 @@ public class DB_Collectable : ScriptableObject
     [SerializeField]
     private Rarity rarity;
     [SerializeField]
-    private Sprite gfx;
-    [SerializeField]
     private uint albumIndex;
     [SerializeField]
     private bool hasFound;
@@ -42,16 +40,9 @@ public class DB_Collectable : ScriptableObject
     private float doubletReward;
 
     public string CollectableName { get { return collectableName; } }
-
     public Rarity Rarity { get { return rarity; } }
-
-    public Sprite Gfx { get { return gfx; } }
-
     public uint AlbumIndex { get { return albumIndex; } }
-
     public bool HasFound { get { return hasFound; } }
-
     public CollectableType Type { get { return type; } }
-
     public float DoubletReward { get { return doubletReward; } }
 }
