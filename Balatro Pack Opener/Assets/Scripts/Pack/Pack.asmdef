@@ -2,7 +2,8 @@
     "name": "Pack",
     "rootNamespace": "",
     "references": [
-        "GUID:a2afe4b948e594448a035dc4e613bdaf"
+        "GUID:a2afe4b948e594448a035dc4e613bdaf",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

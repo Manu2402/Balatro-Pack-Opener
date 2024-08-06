@@ -1,0 +1,40 @@
+{
+    "name": "Inputs",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "c0dfa8a5-5d96-4111-9580-39e47b9fbd51",
+            "actions": [
+                {
+                    "name": "TouchOnScreen",
+                    "type": "Value",
+                    "id": "992dbe40-b915-49b9-934c-e3c56bba8cc0",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7efdd71d-cd78-4a28-92f1-de16a8628270",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "TouchOnScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Android",
+            "bindingGroup": "Android",
+            "devices": []
+        }
+    ]
+}
