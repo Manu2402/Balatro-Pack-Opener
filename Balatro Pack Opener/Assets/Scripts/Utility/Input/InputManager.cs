@@ -1,34 +1,33 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public static class InputManager
+namespace Input
 {
-    private const float touchRayLength = 15;
-
-    private static Inputs inputs;
-
-    static InputManager()
+    public static class InputManager
     {
-        inputs = new Inputs();
-        inputs.Player.Enable();
-    }
+        private const float touchRayLength = 15f;
 
-    public static InputAction TouchOnScreen
-    {
-        get { return inputs.Player.TouchOnScreen; }
-    }
+        private static Inputs inputs;
 
-    public static Inputs.PlayerActions TouchOnScreenTest
-    {
-        get { return inputs.Player; }
-    }
+        static InputManager()
+        {
+            inputs = new Inputs();
+            inputs.Player.Enable();
+        }
 
-    public static GameObject GenericTouchOnScreen()
-    {
-        Vector2 touchPosition = TouchOnScreen.ReadValue<Vector2>();
-        Ray ray = Camera.main.ScreenPointToRay(touchPosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction * touchRayLength);
-        if (hit.collider == null) return null;
-        return hit.collider.gameObject;
+        public static InputAction TouchOnScreen
+        {
+            get { return inputs.Player.TouchOnScreen; }
+        }
+
+        public static ITappable TouchOnScreenExecute()
+        {
+            Vector2 touchPosition = TouchOnScreen.ReadValue<Vector2>();
+            Ray ray = Camera.main.ScreenPointToRay(touchPosition); // Screen to Unity units
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction * touchRayLength);
+            if (hit.collider == null) return null;
+            if (!hit.collider.gameObject.TryGetComponent(out ITappable tappedObj)) return null;
+            return tappedObj;
+        }
     }
 }
