@@ -1,3 +1,16 @@
 {
-	"name": "Album"
+    "name": "Album",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b86b9f5c525dcdb40a293befc4b6b1d9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

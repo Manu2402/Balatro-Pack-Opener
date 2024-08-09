@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2353e42d7cf8114ca9170611aebbfbc, type: 3}
-  m_Name: Pack Arcana
+  m_Name: Joker_StencilJoker
   m_EditorClassIdentifier: 
-  poolKey: Pack Arcana
-  prefab: {fileID: 3835616175827458638, guid: 467f2ea566673bd41a2d081b4d0f11ed, type: 3}
+  poolKey: Joker_StencilJoker
+  prefab: {fileID: 2765020630698985120, guid: 1340e38ca0b393a40a571d33d41ad68d, type: 3}
   poolNumber: 1
   resizablePool: 0
-  activeAtStart: 1
+  activeAtStart: 0

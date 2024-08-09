@@ -8,33 +8,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5437643954791712, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
+    - target: {fileID: -7161785887633920123, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5437643954791712, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
+    - target: {fileID: -7161785887633920123, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5437643954791712, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
+    - target: {fileID: -7161785887633920123, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.14
       objectReference: {fileID: 0}
-    - target: {fileID: 5437643954791712, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
+    - target: {fileID: -7161785887633920123, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.86
       objectReference: {fileID: 0}
-    - target: {fileID: 5437643954791712, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
+    - target: {fileID: -7161785887633920123, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.14
       objectReference: {fileID: 0}
-    - target: {fileID: 5437643954791712, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
+    - target: {fileID: -7161785887633920123, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.86
       objectReference: {fileID: 0}
-    - target: {fileID: 5437643954791712, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
+    - target: {fileID: -7161785887633920123, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5437643954791712, guid: 4b832d69204686944b9c15b516f724fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
