@@ -1,7 +1,7 @@
 using UnityEngine;
-using Input;
+using NS_Input;
 
-namespace Collectable
+namespace NS_Collectable
 {
     public class Collectable : MonoBehaviour, ITappable
     {

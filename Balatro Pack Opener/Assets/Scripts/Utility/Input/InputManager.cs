@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Input
+namespace NS_Input
 {
     public static class InputManager
     {

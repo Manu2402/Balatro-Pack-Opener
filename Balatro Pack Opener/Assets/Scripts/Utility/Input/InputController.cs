@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Input
+namespace NS_Input
 {
     // Controller that handles all inputs of the game with relative subjects.
     public class InputController : MonoBehaviour
