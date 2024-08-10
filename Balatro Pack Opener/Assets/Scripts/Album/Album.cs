@@ -52,7 +52,7 @@ namespace NS_Album
             Collectable[] collectables = FindObjectsByType<Collectable>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (Collectable collectable in collectables)
             {
-                collection.Add(collectable, collectable.gameObject.activeSelf);
+                collection.Add(collectable, collectable.Amount > 0);
             }
         }
 

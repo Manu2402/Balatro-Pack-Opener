@@ -8,6 +8,9 @@ namespace NS_Shop
         [SerializeField]
         private DB_Collectable collectableDatas;
 
+        public uint Amount { get { return collectableDatas.Amount; } }
+        public Rarity Rarity { get { return collectableDatas.Rarity; } }
+
         #region Mono
         private void OnEnable()
         {
