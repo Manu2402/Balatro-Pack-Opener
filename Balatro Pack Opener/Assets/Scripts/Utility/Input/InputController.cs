@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine;
 
 namespace NS_Input
 {
@@ -11,6 +11,8 @@ namespace NS_Input
 
         private List<ITappable> tappables = new List<ITappable>();
         // Other input lists...
+
+        private ISwipeable lastTappedObj;
 
         public static InputController Get()
         {
@@ -33,18 +35,20 @@ namespace NS_Input
 
         private void OnEnable()
         {
-            InputManager.TouchOnScreen.performed += OnTouchOnScreenPerformed;
+            InputManager.TouchScreen.performed += OnTouchOnScreenPerformed;
+            InputManager.TouchScreen.canceled += OnTouchOnScreenCanceled;
             // Other inputs...
         }
 
         private void OnDisable()
         {
-            InputManager.TouchOnScreen.performed -= OnTouchOnScreenPerformed;
+            InputManager.TouchScreen.performed -= OnTouchOnScreenPerformed;
+            InputManager.TouchScreen.canceled -= OnTouchOnScreenCanceled;
             // Other inputs...
         }
         #endregion
 
-        #region Tap
+        #region Tap/Untap
         public void RegisterAsTappable(ITappable obj)
         {
             if (tappables.Contains(obj)) return;
@@ -59,9 +63,26 @@ namespace NS_Input
 
         private void OnTouchOnScreenPerformed(InputAction.CallbackContext context)
         {
-            ITappable tappedObj = InputManager.TouchOnScreenExecute();
+            GameObject tappedObjGO = InputManager.TouchOnScreenExecute();
+            if (tappedObjGO == null) return;
+
+            ITappable tappedObj = tappedObjGO.GetComponent<ITappable>();
+            if (tappedObj == null) return;
+
             if (!tappables.Contains(tappedObj)) return;
             tappedObj.ExecuteTap();
+
+            lastTappedObj = tappedObjGO.GetComponent<ISwipeable>();
+        }
+
+        private void OnTouchOnScreenCanceled(InputAction.CallbackContext context)
+        {
+            if (lastTappedObj == null) return;
+
+            SwipeDirection swipeDirection = InputManager.SwipeOnScreenExecuted();
+            if (swipeDirection == SwipeDirection.None) return;
+            lastTappedObj.ExecuteTapRelease(swipeDirection);
+            lastTappedObj = null;
         }
         #endregion
     }

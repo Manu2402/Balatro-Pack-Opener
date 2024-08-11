@@ -6,13 +6,22 @@
             "id": "c0dfa8a5-5d96-4111-9580-39e47b9fbd51",
             "actions": [
                 {
-                    "name": "TouchOnScreen",
+                    "name": "TouchPosition",
                     "type": "Value",
                     "id": "992dbe40-b915-49b9-934c-e3c56bba8cc0",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TouchScreen",
+                    "type": "Button",
+                    "id": "8ee158cc-1b87-46e8-9f16-7ee330a395f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -23,7 +32,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Android",
-                    "action": "TouchOnScreen",
+                    "action": "TouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "addb39ec-cb7e-4824-82db-9c0cf2b3c1ac",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "TouchScreen",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

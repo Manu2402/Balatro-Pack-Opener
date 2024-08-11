@@ -64,7 +64,7 @@ namespace NS_Shop
             return InputController.Get() != null;
         }
 
-        private Collectable[] GenerateCollectables() // CONTROLLARE COME MAI DELLE VOLTE VENGONO GENERATE 4 CARTE E NON 5
+        private Collectable[] GenerateCollectables()
         {
             Dictionary<Collectable, bool> allCollection = shopHandler.OnGetCollectionData?.Invoke();
             List<Collectable> allCollectionCollectables = allCollection.Keys.ToList();

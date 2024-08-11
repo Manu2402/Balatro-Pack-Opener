@@ -3,7 +3,7 @@ using NS_Input;
 
 namespace NS_Shop
 {
-    public class Collectable : MonoBehaviour, ITappable
+    public class Collectable : MonoBehaviour, ISwipeable
     {
         [SerializeField]
         private DB_Collectable collectableDatas;
@@ -40,6 +40,19 @@ namespace NS_Shop
         {
             // Edit
             Debug.Log("You tapped on a collectable");
+        }
+
+        public void ExecuteTapRelease(SwipeDirection swipeDirection)
+        {
+            // Edit
+            switch (swipeDirection)
+            {
+                case SwipeDirection.Up:
+                    Debug.Log("Swipe up!");
+                    break;
+                default: return;
+                
+            }
         }
         #endregion
 
