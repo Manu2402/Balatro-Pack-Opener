@@ -1,26 +1,27 @@
 using UnityEngine;
 using NS_Input;
-using System.Collections.Generic;
 using System.Linq;
 using System;
+using NS_ObjectPooler;
 
 namespace NS_Shop
 {
     public class Pack : MonoBehaviour, ITappable
     {
         private const int collectablesAmount = 5;
+        private const float zOffset = 0.01f;
 
         [SerializeField]
         private DB_Pack packDatas;
 
-        private ShopHandler shopHandler;
+        private PoolerListRequest poolerListRequest;
 
         private Collectable[] collectablesGenerated = new Collectable[collectablesAmount];
 
         #region Mono
         private void Awake()
         {
-            shopHandler = GameObject.FindObjectOfType<ShopHandler>();
+            poolerListRequest = GameObject.FindObjectOfType<PoolerListRequest>();
         }
 
         private void OnEnable()
@@ -66,28 +67,32 @@ namespace NS_Shop
 
         private Collectable[] GenerateCollectables()
         {
-            Dictionary<Collectable, bool> allCollection = shopHandler.OnGetCollectionData?.Invoke();
-            List<Collectable> allCollectionCollectables = allCollection.Keys.ToList();
             Collectable[] generatedCollectables = new Collectable[collectablesAmount];
             int[] generatedIndexes = new int[collectablesAmount];
 
             InitIndexes(generatedIndexes);
+
+            Vector3 zIndexDepth = Vector3.zero;
 
             for (int i = 0; i < collectablesAmount; i++)
             {
                 int index;
                 do
                 {
-                    index = UnityEngine.Random.Range(0, allCollectionCollectables.Count);
+                    index = UnityEngine.Random.Range(0, poolerListRequest.GetDataLength());
                 }
                 while (generatedIndexes.Contains(index));
 
-                Collectable generatedCollectable = allCollectionCollectables[index];
+                PoolData generatedCollectable = poolerListRequest.GetRandomData(index);
+                if (generatedCollectable.GetType() != typeof(CollectablePoolData)) return null;
+
+                Collectable pickedCollectable = Pooler.Instance.GetPooledObject(generatedCollectable).GetComponent<Collectable>();
+                if (pickedCollectable == null) return null;
 
                 // Last collectable must be at least rare, instead all rest must be common.
                 if (i >= collectablesAmount - 1)
                 {
-                    if (generatedCollectable.Rarity == Rarity.Common)
+                    if (pickedCollectable.Rarity == Rarity.Common)
                     {
                         i--;
                         continue;
@@ -95,7 +100,7 @@ namespace NS_Shop
                 }
                 else
                 {
-                    if(generatedCollectable.Rarity != Rarity.Common)
+                    if (pickedCollectable.Rarity != Rarity.Common)
                     {
                         i--;
                         continue;
@@ -104,8 +109,11 @@ namespace NS_Shop
 
                 generatedIndexes[i] = index;
 
-                generatedCollectable.gameObject.SetActive(true);
-                generatedCollectables[i] = generatedCollectable;
+                pickedCollectable.transform.position = transform.position + zIndexDepth;
+                zIndexDepth.z += zOffset;
+
+                pickedCollectable.gameObject.SetActive(true);
+                generatedCollectables[i] = pickedCollectable;
             }
 
             return generatedCollectables;

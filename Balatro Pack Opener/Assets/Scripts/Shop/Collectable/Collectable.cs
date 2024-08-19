@@ -5,13 +5,32 @@ namespace NS_Shop
 {
     public class Collectable : MonoBehaviour, ISwipeable
     {
+        private const float speed = 50;
+
         [SerializeField]
         private DB_Collectable collectableDatas;
+        [SerializeField]
+        private AnimationCurve animationCurve;
+        [SerializeField]
+        private PoolData collectablePoolDatas;
+
+        private Rigidbody2D rb;
+        private bool canMove = false;
+        
+        private Vector2 defaultSpeed = Vector2.up;
+        private float timer;
 
         public uint Amount { get { return collectableDatas.Amount; } }
         public Rarity Rarity { get { return collectableDatas.Rarity; } }
+        public PoolData CollectablePoolDatas { get { return collectablePoolDatas; } }
 
         #region Mono
+        private void Awake()
+        {
+            timer = 0f;
+            rb = GetComponent<Rigidbody2D>();
+        }
+
         private void OnEnable()
         {
             RegisterTap();
@@ -20,6 +39,19 @@ namespace NS_Shop
         private void OnDisable()
         {
             UnregisterTap();
+        }
+
+        private void FixedUpdate()
+        {
+            if (!canMove) return;
+            // Swipe animation.
+            rb.velocity = animationCurve.Evaluate(timer) * speed * defaultSpeed;
+            timer += Time.fixedDeltaTime;
+        }
+
+        private void OnBecameInvisible()
+        {
+            gameObject.SetActive(false);
         }
         #endregion
 
@@ -48,10 +80,9 @@ namespace NS_Shop
             switch (swipeDirection)
             {
                 case SwipeDirection.Up:
-                    Debug.Log("Swipe up!");
+                    SwipeUpPerformed();
                     break;
                 default: return;
-                
             }
         }
         #endregion
@@ -59,6 +90,12 @@ namespace NS_Shop
         private bool InputControllerIsValid()
         {
             return InputController.Get() != null;
+        }
+
+        private void SwipeUpPerformed()
+        {
+            Debug.Log("Swipe up!");
+            canMove = true;
         }
 
     }

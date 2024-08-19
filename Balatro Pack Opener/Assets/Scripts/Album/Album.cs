@@ -8,9 +8,6 @@ namespace NS_Album
     {
         private Album instance;
 
-        [SerializeField]
-        private ShopHandler shopHandler;
-
         // Collectable | hasFound
         private Dictionary<Collectable, bool> collection = new Dictionary<Collectable, bool>();
 
@@ -34,31 +31,6 @@ namespace NS_Album
 
             instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-
-        private void OnEnable()
-        {
-            shopHandler.OnGetCollectionData += OnGetCollectionData;
-        }
-
-        private void OnDisable()
-        {
-            shopHandler.OnGetCollectionData -= OnGetCollectionData;
-        }
-
-        private void Start()
-        {
-            // Getting all collectables.
-            Collectable[] collectables = FindObjectsByType<Collectable>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            foreach (Collectable collectable in collectables)
-            {
-                collection.Add(collectable, collectable.Amount > 0);
-            }
-        }
-
-        private Dictionary<Collectable, bool> OnGetCollectionData()
-        {
-            return collection;
         }
     }
 }

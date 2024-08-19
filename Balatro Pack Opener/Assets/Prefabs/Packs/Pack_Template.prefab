@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   packDatas: {fileID: 0}
+  collectablePoolDatas: {fileID: 1473082639752361744, guid: 1dce71076e1a6ef4096af60ac8b21336, type: 3}
 --- !u!61 &-7161785887633920123
 BoxCollider2D:
   m_ObjectHideFlags: 0

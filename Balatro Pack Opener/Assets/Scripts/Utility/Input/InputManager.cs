@@ -91,13 +91,13 @@ namespace NS_Input
             Vector2 swipeVector = swipeControlPosition.TouchReleased - swipeControlPosition.TouchPressed;
             if (swipeVector.sqrMagnitude <= swipeValidateMagnitude * swipeValidateMagnitude) return SwipeDirection.None;
 
-            if(swipeVector.x > swipeVector.y) return InternalGetSwipeDirection(true, swipeControlPosition.TouchPressed.x < swipeControlPosition.TouchReleased.x);
+            if (Mathf.Abs(swipeVector.x) > Mathf.Abs(swipeVector.y)) return InternalGetSwipeDirection(true, swipeControlPosition.TouchPressed.x < swipeControlPosition.TouchReleased.x);
             return InternalGetSwipeDirection(false, swipeControlPosition.TouchPressed.y < swipeControlPosition.TouchReleased.y);
         }
 
-        private static SwipeDirection InternalGetSwipeDirection(bool conditionOnXAxis, bool condition)
+        private static SwipeDirection InternalGetSwipeDirection(bool isConditionOnXAxis, bool condition)
         {
-            if (conditionOnXAxis)
+            if (isConditionOnXAxis)
             {
                 if (condition) return SwipeDirection.Right;
                 return SwipeDirection.Left;
