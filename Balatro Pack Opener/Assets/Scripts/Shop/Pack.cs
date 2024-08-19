@@ -84,8 +84,6 @@ namespace NS_Shop
                 while (generatedIndexes.Contains(index));
 
                 PoolData generatedCollectable = poolerListRequest.GetRandomData(index);
-                if (generatedCollectable.GetType() != typeof(CollectablePoolData)) return null;
-
                 Collectable pickedCollectable = Pooler.Instance.GetPooledObject(generatedCollectable).GetComponent<Collectable>();
                 if (pickedCollectable == null) return null;
 
