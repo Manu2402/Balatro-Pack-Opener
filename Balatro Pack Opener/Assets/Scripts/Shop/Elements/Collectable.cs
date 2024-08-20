@@ -13,11 +13,14 @@ namespace NS_Shop
         private AnimationCurve animationCurve;
         [SerializeField]
         private PoolData collectablePoolDatas;
+        [SerializeField]
+        private ShopHandler shopHandler;
 
         private Rigidbody2D rb;
         private bool canMove = false;
         
         private Vector2 defaultSpeed = Vector2.up;
+
         private float timer;
 
         public uint Amount { get { return collectableDatas.Amount; } }
@@ -27,12 +30,13 @@ namespace NS_Shop
         #region Mono
         private void Awake()
         {
-            timer = 0f;
             rb = GetComponent<Rigidbody2D>();
         }
 
         private void OnEnable()
         {
+            canMove = false;
+            timer = 0f;
             RegisterTap();
         }
 
@@ -52,6 +56,9 @@ namespace NS_Shop
         private void OnBecameInvisible()
         {
             gameObject.SetActive(false);
+
+            if (collectableDatas.Rarity == Rarity.Common) return;
+            shopHandler.OnEndedPackOpening?.Invoke();
         }
         #endregion
 

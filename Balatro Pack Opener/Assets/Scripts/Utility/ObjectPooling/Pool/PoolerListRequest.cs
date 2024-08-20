@@ -1,19 +1,10 @@
 using NS_ObjectPooler;
 using UnityEngine;
 
-// Temp.
-public enum PoolerListType
-{
-    Collectables
-}
-
 public class PoolerListRequest : MonoBehaviour
 {
     [SerializeField]
     private PoolData[] poolDatas;
-
-    [SerializeField]
-    private PoolerListType poolerListType;
 
     private void Awake()
     {

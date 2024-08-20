@@ -8,29 +8,40 @@ namespace NS_Shop
 {
     public class Pack : MonoBehaviour, ITappable
     {
-        private const int collectablesAmount = 5;
         private const float zOffset = 0.01f;
 
         [SerializeField]
         private DB_Pack packDatas;
+        [SerializeField]
+        private ShopHandler shopHandler;
 
         private PoolerListRequest poolerListRequest;
+        private Collectable[] collectablesGenerated;
+        private uint collectablesAmount;
 
-        private Collectable[] collectablesGenerated = new Collectable[collectablesAmount];
+        private SpriteRenderer spriteRenderer;
+        private BoxCollider2D boxCollider;
 
         #region Mono
         private void Awake()
         {
             poolerListRequest = GameObject.FindObjectOfType<PoolerListRequest>();
+            collectablesAmount = packDatas.CollectablesAmount;
+            collectablesGenerated = new Collectable[collectablesAmount];
+
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            boxCollider = GetComponent<BoxCollider2D>();
         }
 
         private void OnEnable()
         {
+            shopHandler.OnEndedPackOpening += OnEndedPackOpening;
             RegisterTap();
         }
 
         private void OnDisable()
         {
+            shopHandler.OnEndedPackOpening -= OnEndedPackOpening;
             UnregisterTap();
         }
         #endregion
@@ -51,12 +62,9 @@ namespace NS_Shop
         public void ExecuteTap()
         {
             collectablesGenerated = GenerateCollectables();
-
-            // Dopo lo scorrimento di tutti i collezionabili far tornare il pacchetto.
+            PackManager.HidePacks();
 
             // Aggiungere i collezionabili all'album.
-
-            gameObject.SetActive(false);
         }
         #endregion
 
@@ -107,7 +115,7 @@ namespace NS_Shop
 
                 generatedIndexes[i] = index;
 
-                pickedCollectable.transform.position = transform.position + zIndexDepth;
+                pickedCollectable.transform.position = zIndexDepth;
                 zIndexDepth.z += zOffset;
 
                 pickedCollectable.gameObject.SetActive(true);
@@ -123,6 +131,23 @@ namespace NS_Shop
             {
                 generatedIndexes[i] = -1; // -1 isn't in the collection.
             }
+        }
+
+        private void OnEndedPackOpening()
+        {
+            PackManager.ShowPacks();
+        }
+
+        public void ShowPack()
+        {
+            spriteRenderer.enabled = true;
+            boxCollider.enabled = true;
+        }
+
+        public void HidePack()
+        {
+            spriteRenderer.enabled = false;
+            boxCollider.enabled = false;
         }
 
     }

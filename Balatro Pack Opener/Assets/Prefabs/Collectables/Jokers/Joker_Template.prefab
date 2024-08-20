@@ -124,6 +124,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  collectablePoolDatas: {fileID: 0}
+  shopHandler: {fileID: 277542493025106598, guid: 5463c4dba53772544afcc3972fa83aea, type: 3}
 --- !u!61 &-7928452784650148737
 BoxCollider2D:
   m_ObjectHideFlags: 0
