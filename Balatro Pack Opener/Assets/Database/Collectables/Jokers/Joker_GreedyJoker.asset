@@ -15,6 +15,6 @@ MonoBehaviour:
   collectableName: Greedy Joker
   rarity: 0
   albumIndex: 1
-  hasFound: 0
+  prefab: {fileID: 439380263066859677, guid: e11d428009171be4f8ec56e1eb92fe3d, type: 3}
   type: 0
   doubletReward: 5

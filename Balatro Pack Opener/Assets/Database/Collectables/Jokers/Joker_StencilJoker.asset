@@ -15,6 +15,6 @@ MonoBehaviour:
   collectableName: Stencil Joker
   rarity: 1
   albumIndex: 16
-  hasFound: 0
+  prefab: {fileID: 2765020630698985120, guid: 1340e38ca0b393a40a571d33d41ad68d, type: 3}
   type: 0
   doubletReward: 10

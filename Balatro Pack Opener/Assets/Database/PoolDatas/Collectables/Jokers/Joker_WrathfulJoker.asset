@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2353e42d7cf8114ca9170611aebbfbc, type: 3}
-  m_Name: Joker_WraithfulJoker
+  m_Name: Joker_WrathfulJoker
   m_EditorClassIdentifier: 
-  poolKey: Joker_WraithfulJoker
-  prefab: {fileID: 33092999533144232, guid: e9414677ab735714aafbd06d0d1e3b0e, type: 3}
+  poolKey: Joker_WrathfulJoker
+  obj: {fileID: 11400000, guid: 74f3210f64b06da43aeeb26f421f305f, type: 2}
   poolNumber: 1
   resizablePool: 0
   activeAtStart: 0

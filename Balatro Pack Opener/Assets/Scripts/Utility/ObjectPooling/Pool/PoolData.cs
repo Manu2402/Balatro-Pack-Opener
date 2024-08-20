@@ -6,7 +6,8 @@ public class PoolData : ScriptableObject
     [SerializeField]
     private string poolKey;
     [SerializeField]
-    private GameObject prefab;
+    private Object obj; // It could be both GameObject and ScriptableObject with GameObject data.
+                        // Object is the generic serializable type, and group GameObject and ScriptableObject.
     [SerializeField]
     private int poolNumber;
     [SerializeField]
@@ -19,9 +20,9 @@ public class PoolData : ScriptableObject
         get { return poolKey; }
     }
 
-    public GameObject Prefab
+    public Object Obj
     {
-        get { return prefab; }
+        get { return obj; }
     }
 
     public int PoolNumber
@@ -37,5 +38,11 @@ public class PoolData : ScriptableObject
     public bool ActiveAtStart
     {
         get { return activeAtStart; }
+    }
+
+    private void OnValidate() // Called whenever a serialized field has going changed.
+    {
+        if (obj is GameObject || obj is ScriptableObject) return;
+        Debug.LogError("Didn't set a GameObject or ScriptableObject! You set the type: " + obj.GetType().ToString());
     }
 }

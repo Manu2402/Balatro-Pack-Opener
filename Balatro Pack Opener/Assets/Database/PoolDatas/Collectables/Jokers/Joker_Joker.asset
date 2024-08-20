@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Joker_Joker
   m_EditorClassIdentifier: 
   poolKey: Joker_Joker
-  prefab: {fileID: 5913785038125696841, guid: ab0b85609323ca44196669ac159a1c74, type: 3}
+  obj: {fileID: 11400000, guid: f1765ffef4505bb448a9a7e2edf20db6, type: 2}
   poolNumber: 1
   resizablePool: 0
   activeAtStart: 0

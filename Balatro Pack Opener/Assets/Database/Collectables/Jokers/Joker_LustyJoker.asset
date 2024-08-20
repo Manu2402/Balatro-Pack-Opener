@@ -15,6 +15,6 @@ MonoBehaviour:
   collectableName: Lusty Joker
   rarity: 0
   albumIndex: 2
-  hasFound: 0
+  prefab: {fileID: 3727471414129631349, guid: 0d479c626b1bb6348a97738369d42bff, type: 3}
   type: 0
   doubletReward: 5

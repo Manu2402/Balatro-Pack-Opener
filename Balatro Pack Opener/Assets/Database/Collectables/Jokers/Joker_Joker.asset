@@ -15,6 +15,6 @@ MonoBehaviour:
   collectableName: Joker
   rarity: 0
   albumIndex: 0
-  hasFound: 0
+  prefab: {fileID: 5913785038125696841, guid: ab0b85609323ca44196669ac159a1c74, type: 3}
   type: 0
   doubletReward: 5

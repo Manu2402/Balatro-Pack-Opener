@@ -15,6 +15,6 @@ MonoBehaviour:
   collectableName: Wrathful Joker
   rarity: 0
   albumIndex: 3
-  hasFound: 0
+  prefab: {fileID: 33092999533144232, guid: e9414677ab735714aafbd06d0d1e3b0e, type: 3}
   type: 0
   doubletReward: 5

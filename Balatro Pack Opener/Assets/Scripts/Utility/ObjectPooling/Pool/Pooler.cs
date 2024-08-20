@@ -97,7 +97,7 @@ namespace NS_ObjectPooler
                 return null;
             }
 
-            ExtendExistingPool(data.PoolKey, data.Prefab, (int)(pool[data.PoolKey].Length * 1.33f));
+            ExtendExistingPool(data.PoolKey, data.Obj, (int)(pool[data.PoolKey].Length * 1.33f));
             return GetPooledObject(data);
         }
 
@@ -107,7 +107,7 @@ namespace NS_ObjectPooler
 
             for (int i = 0; i < pooledObject.Length; i++)
             {
-                pooledObject[i] = InternalInstantiate(data.Prefab, data.ActiveAtStart);
+                pooledObject[i] = InternalInstantiate(data.Obj, data.ActiveAtStart);
             }
 
             pool.Add(data.PoolKey, pooledObject);
@@ -115,10 +115,10 @@ namespace NS_ObjectPooler
 
         private void ExtendExistingPool(PoolData data)
         {
-            ExtendExistingPool(data.PoolKey, data.Prefab, data.PoolNumber);
+            ExtendExistingPool(data.PoolKey, data.Obj, data.PoolNumber);
         }
 
-        private void ExtendExistingPool(string key, GameObject prefab, int newPoolNumber)
+        private void ExtendExistingPool(string key, Object obj, int newPoolNumber)
         {
             GameObject[] pooledObject = new GameObject[newPoolNumber];
             GameObject[] existingPool = pool[key];
@@ -131,15 +131,30 @@ namespace NS_ObjectPooler
 
             for (; i < pooledObject.Length; i++)
             {
-                pooledObject[i] = InternalInstantiate(prefab);
+                pooledObject[i] = InternalInstantiate(obj);
             }
 
             pool[key] = pooledObject;
         }
 
-        private GameObject InternalInstantiate(GameObject prefab, bool activeAtStart = false)
+        private GameObject InternalInstantiate(Object obj, bool activeAtStart = false)
         {
-            GameObject temp = Instantiate(prefab);
+            GameObject temp = null;
+
+            switch (obj)
+            {
+                // Indirect cast to a new type.
+                case IPooler prefabInterface: // Every script that implements "IPooler".
+                    temp = Instantiate(prefabInterface.GetGameObject());
+                    break;
+                case GameObject prefabGameObject: // Every single GameObject (prefab).
+                    temp = Instantiate(prefabGameObject);
+                    break;
+                default:
+                    Debug.LogError("Invalidate type to be pooled!");
+                    break;
+            }
+
             DontDestroyOnLoad(temp);
             temp.SetActive(activeAtStart);
             return temp;

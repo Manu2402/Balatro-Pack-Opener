@@ -23,9 +23,9 @@ namespace NS_Shop
 
         private float timer;
 
-        public uint Amount { get { return collectableDatas.Amount; } }
+        #region Bad
         public Rarity Rarity { get { return collectableDatas.Rarity; } }
-        public PoolData CollectablePoolDatas { get { return collectablePoolDatas; } }
+        #endregion
 
         #region Mono
         private void Awake()
@@ -104,6 +104,5 @@ namespace NS_Shop
             Debug.Log("Swipe up!");
             canMove = true;
         }
-
     }
 }

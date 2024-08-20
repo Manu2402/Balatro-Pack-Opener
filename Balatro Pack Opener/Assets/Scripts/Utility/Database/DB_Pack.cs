@@ -24,8 +24,11 @@ public class DB_Pack : ScriptableObject
     private PackType packType;
     [SerializeField]
     private BoostType boostType;
+    [SerializeField]
+    private GameObject prefab;
 
     public uint CollectablesAmount { get { return collectablesAmount; } }
     public PackType PackType { get { return packType; } }
     public BoostType BoostType { get { return boostType; } }
+    public GameObject Prefab { get { return prefab; } }
 }
