@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IPooler
+namespace NS_ObjectPooler
 {
-    GameObject GetGameObject(); // Handling ScriptableObjects.
+    public interface IPooler
+    {
+        GameObject GetGameObject(); // Handling ScriptableObjects.
+    }
 }

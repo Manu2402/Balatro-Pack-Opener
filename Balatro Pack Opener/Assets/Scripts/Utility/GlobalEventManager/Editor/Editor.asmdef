@@ -1,11 +1,12 @@
 {
-    "name": "Album",
+    "name": "Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:b86b9f5c525dcdb40a293befc4b6b1d9",
         "GUID:a2afe4b948e594448a035dc4e613bdaf"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

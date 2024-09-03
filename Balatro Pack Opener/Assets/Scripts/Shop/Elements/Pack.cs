@@ -16,7 +16,7 @@ namespace NS_Shop
         private ShopHandler shopHandler;
 
         private PoolerListRequest poolerListRequest;
-        private Collectable[] collectablesGenerated;
+        private GameObject[] collectablesGenerated;
         private uint collectablesAmount;
 
         private SpriteRenderer spriteRenderer;
@@ -27,7 +27,7 @@ namespace NS_Shop
         {
             poolerListRequest = GameObject.FindObjectOfType<PoolerListRequest>();
             collectablesAmount = packDatas.CollectablesAmount;
-            collectablesGenerated = new Collectable[collectablesAmount];
+            collectablesGenerated = new GameObject[collectablesAmount];
 
             spriteRenderer = GetComponent<SpriteRenderer>();
             boxCollider = GetComponent<BoxCollider2D>();
@@ -64,7 +64,9 @@ namespace NS_Shop
             collectablesGenerated = GenerateCollectables();
             PackManager.HidePacks();
 
-            // Aggiungere i collezionabili all'album.
+            GlobalEventManager.CastEvent(GlobalEventIndex.PackOpened,
+                GlobalEventArgsFactory.PackOpenedFactory(collectablesAmount,
+                collectablesGenerated));
         }
         #endregion
 
@@ -73,9 +75,9 @@ namespace NS_Shop
             return InputController.Get() != null;
         }
 
-        private Collectable[] GenerateCollectables()
+        private GameObject[] GenerateCollectables()
         {
-            Collectable[] generatedCollectables = new Collectable[collectablesAmount];
+            GameObject[] generatedCollectables = new GameObject[collectablesAmount];
             int[] generatedIndexes = new int[collectablesAmount];
 
             InitIndexes(generatedIndexes);
@@ -119,7 +121,7 @@ namespace NS_Shop
                 zIndexDepth.z += zOffset;
 
                 pickedCollectable.gameObject.SetActive(true);
-                generatedCollectables[i] = pickedCollectable;
+                generatedCollectables[i] = pickedCollectable.gameObject;
             }
 
             return generatedCollectables;

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2353e42d7cf8114ca9170611aebbfbc, type: 3}
-  m_Name: Joker_StencilJoker
+  m_Script: {fileID: 11500000, guid: cf338471d8a64404488fdf7275081e4f, type: 3}
+  m_Name: PackOpened
   m_EditorClassIdentifier: 
-  poolKey: Joker_StencilJoker
-  obj: {fileID: 2765020630698985120, guid: 1340e38ca0b393a40a571d33d41ad68d, type: 3}
-  poolNumber: 1
-  resizablePool: 0
-  activeAtStart: 0
+  eventTemplate: 0
+  variablesName:
+  - Collectables Amount
+  - 'Collectables '
+  variablesType: 0000000002000000

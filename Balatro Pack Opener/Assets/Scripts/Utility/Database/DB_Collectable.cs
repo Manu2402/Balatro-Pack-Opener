@@ -24,7 +24,7 @@ public enum CollectableType
 }
 
 [CreateAssetMenu(fileName = "Collectable", menuName = "Database/Collectable", order = 1)]
-public class DB_Collectable : ScriptableObject, IPooler
+public class DB_Collectable : ScriptableObject
 {
     [SerializeField]
     private string collectableName;
@@ -32,8 +32,6 @@ public class DB_Collectable : ScriptableObject, IPooler
     private Rarity rarity;
     [SerializeField]
     private uint albumIndex;
-    [SerializeField]
-    private GameObject prefab;
 
     private uint amount;
 
@@ -45,13 +43,8 @@ public class DB_Collectable : ScriptableObject, IPooler
     public string CollectableName { get { return collectableName; } }
     public Rarity Rarity { get { return rarity; } }
     public uint AlbumIndex { get { return albumIndex; } }
-    public GameObject Prefab { get { return prefab; } }
     public uint Amount { get { return amount; } }
     public CollectableType Type { get { return type; } }
     public float DoubletReward { get { return doubletReward; } }
 
-    public GameObject GetGameObject()
-    {
-        return prefab;
-    }
 }

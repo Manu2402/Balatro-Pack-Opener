@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Joker_LustyJoker
   m_EditorClassIdentifier: 
   poolKey: Joker_LustyJoker
-  obj: {fileID: 11400000, guid: 436aa657d81ab024ca32d80cbd3be74e, type: 2}
+  obj: {fileID: 3727471414129631349, guid: 0d479c626b1bb6348a97738369d42bff, type: 3}
   poolNumber: 1
   resizablePool: 0
   activeAtStart: 0

@@ -1,28 +1,30 @@
-using NS_Shop;
 using UnityEngine;
 
-public static class PackManager
+namespace NS_Shop
 {
-    private static Pack[] packs;
-
-    static PackManager()
+    public static class PackManager
     {
-        packs = GameObject.FindObjectsOfType<Pack>();
-    }
+        private static Pack[] packs;
 
-    public static void HidePacks()
-    {
-        foreach(Pack pack in packs)
+        static PackManager()
         {
-            pack.HidePack();
+            packs = GameObject.FindObjectsOfType<Pack>();
         }
-    }
 
-    public static void ShowPacks()
-    {
-        foreach (Pack pack in packs)
+        public static void HidePacks()
         {
-            pack.ShowPack();
+            foreach (Pack pack in packs)
+            {
+                pack.HidePack();
+            }
+        }
+
+        public static void ShowPacks()
+        {
+            foreach (Pack pack in packs)
+            {
+                pack.ShowPack();
+            }
         }
     }
 }

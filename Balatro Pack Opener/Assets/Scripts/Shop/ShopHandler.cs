@@ -1,32 +1,35 @@
 using System;
 using UnityEngine;
 
-public class ShopHandler : MonoBehaviour
+namespace NS_Shop
 {
-    private ShopHandler instance;
-
-    public ShopHandler Instance
+    public class ShopHandler : MonoBehaviour
     {
-        get
-        {
-            if (instance != null) return instance;
-            instance = GameObject.FindObjectOfType<ShopHandler>();
-            return instance;
-        }
-    }
+        private ShopHandler instance;
 
-    public Action OnEndedPackOpening;
-
-    private void Awake()
-    {
-        if (instance != null && instance != this)
+        public ShopHandler Instance
         {
-            Destroy(gameObject);
-            return;
+            get
+            {
+                if (instance != null) return instance;
+                instance = GameObject.FindObjectOfType<ShopHandler>();
+                return instance;
+            }
         }
 
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+        public Action OnEndedPackOpening;
 
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+    }
 }
