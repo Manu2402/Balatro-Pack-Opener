@@ -9,8 +9,8 @@ namespace NS_Album
     {
         private Album instance;
 
-        // Csollectable | hasFound
-        private Dictionary<Collectable, bool> collection = new Dictionary<Collectable, bool>();
+        // albumIndexOfCollectable | hasFound
+        private readonly Dictionary<uint, bool> collection = new Dictionary<uint, bool>();
 
         public Album Instance
         {
@@ -59,7 +59,7 @@ namespace NS_Album
             // Edit when will implemented save system.
             foreach(Collectable collectable in allCollectables)
             {
-                collection.Add(collectable, false);
+                collection.Add(collectable.AlbumIndex, false);
             }
         }
 
@@ -93,7 +93,18 @@ namespace NS_Album
 
         private void OnPackOpened(GlobalEventArgs message)
         {
-            // Implements method.
+            for (int i = 1; i < message.Args.Length; i++)
+            {
+                GameObject currentCollectableGO = (GameObject)message.Args[i].GetValue();
+                Collectable currentCollectable = currentCollectableGO.GetComponent<Collectable>(); // We are sure about this.
+                if (!collection.ContainsKey(currentCollectable.AlbumIndex))
+                {
+                    Debug.LogError("This collectable isn't in the collection!");
+                    return;
+                }
+
+                collection[currentCollectable.AlbumIndex] = true;
+            }
         }
     }
 }

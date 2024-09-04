@@ -25,6 +25,8 @@ namespace NS_Shop
 
         #region Bad
         public Rarity Rarity { get { return collectableDatas.Rarity; } }
+
+        public uint AlbumIndex { get { return collectableDatas.AlbumIndex; } }
         #endregion
 
         #region Mono

@@ -26,7 +26,8 @@ public static class GlobalEventArgsFactory
 
         message.Args = new ExtendedVariable[collectablesAmount + 1];
 
-        const string collectablesAmountString = "Collectables Amount";
+        // Useful to know the collectables amount in the parser, in order to fill up the array. 
+        const string collectablesAmountString = "Collectables Amount"; 
         message.Args[0] = new ExtendedVariable(collectablesAmountString,
             ExtendedVariableType.UInt,
             collectablesAmount

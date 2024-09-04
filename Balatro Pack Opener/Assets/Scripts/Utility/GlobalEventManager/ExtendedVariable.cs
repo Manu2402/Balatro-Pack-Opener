@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System;
 using UnityEngine;
 
@@ -80,29 +79,29 @@ public class ExtendedVariable
         switch (type)
         {
             case ExtendedVariableType.Bool:
-            boolValue = (bool)value;
-            break;
+                boolValue = (bool)value;
+                break;
             case ExtendedVariableType.Float:
-            floatValue = (float)value;
-            break;
+                floatValue = (float)value;
+                break;
             case ExtendedVariableType.GameObject:
-            gameObjectValue = (GameObject)value;
-            break;
+                gameObjectValue = (GameObject)value;
+                break;
             case ExtendedVariableType.Int:
-            intValue = (int)value;
-            break;
+                intValue = (int)value;
+                break;
             case ExtendedVariableType.String:
-            stringValue = (string)value;
-            break;
+                stringValue = (string)value;
+                break;
             case ExtendedVariableType.Vector2:
-            vector2Value = (Vector2)value;
-            break;
+                vector2Value = (Vector2)value;
+                break;
             case ExtendedVariableType.Vector3:
-            vector3Value = (Vector3)value;
-            break;
+                vector3Value = (Vector3)value;
+                break;
             case ExtendedVariableType.UInt:
-            uIntValue = (uint)value;
-            break;
+                uIntValue = (uint)value;
+                break;
         }
     }
     #endregion
