@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="SwitchBarSlot" src="project://database/Assets/UI/Templates/SwitchBarSlot.uxml?fileID=9197481963319205126&amp;guid=a9ff67e72507d0b40b20c2368bde428f&amp;type=3#SwitchBarSlot" />
+    <Style src="project://database/Assets/UI/USS/SwitchBarSlot.uss?fileID=7433441132597879392&amp;guid=3ea7fcf909a2beb4bbc0391711112d21&amp;type=3#SwitchBarSlot" />
+    <ui:VisualElement name="RootContainer" style="flex-grow: 0.1; flex-direction: row; align-self: auto; justify-content: flex-start; align-items: stretch; flex-wrap: nowrap; flex-shrink: 1; bottom: -90%;">
+        <ui:Instance template="SwitchBarSlot" name="Quests" class="quests" style="flex-grow: 1;" />
+        <ui:Instance template="SwitchBarSlot" name="Album" class="album" style="flex-grow: 1;" />
+        <ui:Instance template="SwitchBarSlot" name="Shop" class="shop" style="flex-grow: 1;" />
+        <ui:Instance template="SwitchBarSlot" name="Poker" class="poker" style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>

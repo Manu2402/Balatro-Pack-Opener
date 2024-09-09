@@ -76,7 +76,7 @@ namespace NS_Album
             return null;
         }
 
-        // Convert into static method if will be useful again.
+        // Convert into static method if it will be useful again.
         private Collectable[] CastObjectsToCollectables(GameObject[] prefabs)
         {
             List<Collectable> allCollectables = new List<Collectable>(prefabs.Length);
